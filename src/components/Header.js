@@ -1,29 +1,26 @@
 import React from 'react';
-import {View, Text, StyleSheet } from 'react-native';
+import {View, Text, StyleSheet, Button} from 'react-native';
+import HeaderStyle from 'src/assets/jss/HeaderStyle';
 
 export default function Header({title}) {
   return (
-    <View style={styles.header}>
-      <Text style={styles.text}>
-        {title}
-      </Text>
-    </View>
+    <>
+      <View style={styles.header}>
+        <Text style={styles.text}>{title}</Text>
+      </View>
+      <View style={styles.summary}>
+        <Text style={styles.text} style={{color: 'darkslateblue'}}>
+          Summary
+        </Text>
+        <Button style={styles.countryBtn} title="Singapore" />
+      </View>
+    </>
   );
 }
 
 Header.defaultProps = {
-    title: 'Default Header'
+  title: 'Default Header',
 };
 
-const styles = StyleSheet.create({
-    header: {
-      height: 60,
-      padding: 15,
-      backgroundColor: 'darkslateblue'
-    },
-    text: {
-       color: '#fff',
-       fontSize: 23,
-       textAlign: 'center' 
-    }
-  });
+const useStyles = StyleSheet.create(HeaderStyle);
+const styles = useStyles();
