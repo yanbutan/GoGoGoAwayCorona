@@ -1,13 +1,13 @@
 import React from 'react';
-import {View, StyleSheet} from 'react-native';
+import {ScrollView, StyleSheet} from 'react-native';
 import Header from 'src/components/Header';
 import Summary from 'src/components/Summary';
 export default function App() {
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <Header title="Covid Statistics" />
       <Summary />
-    </View>
+    </ScrollView>
   );
 }
 

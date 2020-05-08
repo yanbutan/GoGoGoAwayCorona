@@ -8,6 +8,7 @@ const headerStyle = theme => ({
   viewRight: {flexDirection: 'row', justifyContent: 'flex-end'},
   summary: {
     marginTop: 10,
+    marginBottom: 10,
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
@@ -27,6 +28,35 @@ const headerStyle = theme => ({
     // padding: 0
   },
   pickerLabel: {color: '#1E6262'},
+  verticalContain: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'space-around',
+    alignItems: 'stretch',
+  },
+  card: {
+    margin: 12,
+    borderRadius: 10,
+    height: 100,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+
+    elevation: 5,
+  },
+  confirmed: {
+    backgroundColor: '#2D767F',
+  },
+  death: {
+    backgroundColor: '#F0F1F3',
+  },
+  recovered: {
+    backgroundColor: '#49BEB7',
+  },
 });
 
 export default headerStyle;
