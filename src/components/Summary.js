@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {NEWS_API_KEY} from 'react-native-dotenv';
 import HeaderStyle from 'src/assets/jss/HeaderStyle';
 import {Picker} from '@react-native-community/picker';
 import MaskWomanSVG from 'src/assets/svg/mask-woman.svg';
