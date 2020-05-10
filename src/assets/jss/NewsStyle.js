@@ -17,9 +17,10 @@ const newsStyle = theme => ({
   newsCard: {
     margin: 12,
     borderRadius: 0,
-    height: 170,
+    height: 200,
     width: 300,
-    backgroundColor: '#F0F1F3',
+    backgroundColor: '#fff',
+    borderColor: '#dddddd',
   },
   shadow: {
     shadowColor: '#000',
@@ -33,14 +34,15 @@ const newsStyle = theme => ({
   },
   newsPrimary: {
     color: '#2D767F',
-    fontSize: 40,
-    marginLeft: 30,
+    fontSize: 20,
   },
   newsSecondary: {
     color: '#2D767F',
-    // fontSize: 25,
-    marginLeft: 30,
   },
+  image: {
+    flex: 2,
+  },
+  newsSummary: {flex: 1, paddingLeft: 10, paddingTop: 10},
 });
 
 export default newsStyle;

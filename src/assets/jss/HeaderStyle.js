@@ -70,7 +70,7 @@ const headerStyle = theme => ({
   cardSecondary: {
     color: '#ECFFFB',
     // fontSize: 25,
-    marginLeft: 60,
+    // marginLeft: 60,
   },
 });
 

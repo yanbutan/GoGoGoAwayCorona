@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {View, Text, StyleSheet, ScrollView} from 'react-native';
 import NewsStyle from 'src/assets/jss/NewsStyle';
-import MaskWomanSVG from 'src/assets/svg/mask-woman.svg';
+// import MaskWomanSVG from 'src/assets/svg/mask-woman.svg';
 const useStyles = StyleSheet.create(NewsStyle);
 const styles = useStyles();
 
@@ -14,16 +14,16 @@ export default function LatestNews() {
         </View>
       </View>
       <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-        <View
-          style={[styles.newsCard, styles.shadow, styles.horizontalContain]}>
-          <View>
+        <View style={[styles.newsCard, styles.shadow]}>
+          <View style={styles.image} />
+          <View style={styles.newsSummary}>
             <Text style={styles.newsPrimary}>Some News Title</Text>
             <Text style={styles.newsSecondary}>13 May 2019</Text>
           </View>
         </View>
-        <View
-          style={[styles.newsCard, styles.shadow, styles.horizontalContain]}>
-          <View>
+        <View style={[styles.newsCard, styles.shadow]}>
+          <View style={styles.image} />
+          <View style={styles.newsSummary}>
             <Text style={styles.newsPrimary}>Some News Title</Text>
             <Text style={styles.newsSecondary}>13 May 2019</Text>
           </View>
