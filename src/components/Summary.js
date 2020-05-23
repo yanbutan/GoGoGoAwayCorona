@@ -31,34 +31,33 @@ export default function Summary() {
       {isLoading ? (
         <ActivityIndicator />
       ) : (
-        <View style={styles.verticalContain}>
+        <>
+        <View style={[styles.horizontalContain,{marginRight: 6, marginLeft: 6}]}>
           <View
             style={[
               styles.card,
               styles.shadow,
-              styles.confirmed,
-              styles.horizontalContain,
+              styles.death
             ]}>
             <View>
-              <Text style={styles.cardPrimary}>{data.cases}</Text>
-              <Text style={styles.cardSecondary}>Confirmed Cases</Text>
+              <Text style={[styles.cardPrimary, {color: "#F98C62"}]}>{data.cases}</Text>
+              <Text style={[styles.cardSecondary, {color: "#FBB192"}]}>Confirmed Cases</Text>
             </View>
-            <View>
+            {/* <View>
               <MaskWomanSVG width={100} height={90} />
-            </View>
+            </View> */}
           </View>
           <View
             style={[
               styles.card,
               styles.shadow,
               styles.death,
-              styles.horizontalContain,
             ]}>
-            <View>
+            {/* <View>
               <DoctorWomanSVG width={100} height={90} />
-            </View>
+            </View> */}
             <View>
-              <Text style={[styles.cardPrimary, {color: '#FF5959'}]}>
+              <Text style={[styles.cardPrimary, {color: '#A3003F'}]}>
                 {data.deaths}
               </Text>
               <Text style={[styles.cardSecondary, {color: '#FF5959'}]}>
@@ -66,23 +65,39 @@ export default function Summary() {
               </Text>
             </View>
           </View>
-          <View
+        </View>
+        <View style={[styles.horizontalContain,{marginRight: 6, marginLeft: 6}]}>
+           <View
             style={[
               styles.card,
               styles.shadow,
               styles.recovered,
-              styles.horizontalContain,
             ]}>
             <View>
               <Text style={styles.cardPrimary}>{data.recovered}</Text>
               <Text style={styles.cardSecondary}>Recovered</Text>
             </View>
-            <View>
+            {/* <View>
               <RemoteWorkSVG width={100} height={90} />
+            </View> */}
+            <View />
+          </View>
+          <View
+            style={[
+              styles.card,
+              styles.shadow,
+            ]}>
+            <View>
+              <Text style={[styles.cardPrimary,{color: "#2D31AC"}]}>{data.recovered}</Text>
+              <Text style={[styles.cardSecondary, {color: "#6587DE"}]}>Recovered</Text>
             </View>
+            {/* <View>
+              <RemoteWorkSVG width={100} height={90} />
+            </View> */}
             <View />
           </View>
         </View>
+        </>
       )}
     </>
   );

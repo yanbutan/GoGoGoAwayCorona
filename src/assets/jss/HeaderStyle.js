@@ -36,9 +36,14 @@ const headerStyle = theme => ({
     alignItems: 'stretch',
   },
   card: {
-    margin: 12,
+    marginTop: 5,
     borderRadius: 10,
+    width: 180,
     height: 100,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#F4F5F6",
+    color: "#000"
   },
   shadow: {
     shadowColor: '#000',
@@ -50,27 +55,25 @@ const headerStyle = theme => ({
     shadowRadius: 3.84,
     elevation: 5,
   },
-  confirmed: {
-    backgroundColor: '#3e3636',
-    // marginLeft: 0,
-    padding: 30,
-  },
-  death: {
-    backgroundColor: '#F0F1F3',
-    padding: 30,
-  },
-  recovered: {
-    backgroundColor: '#49BEB7',
-    padding: 30,
-  },
+  // confirmed: {
+  //   backgroundColor: '#3e3636',
+  //   // marginLeft: 0,
+  //   padding: 30,
+  // },
+  // death: {
+  //   backgroundColor: '#F4F5F6',
+  //   padding: 30,
+  // },
+  // recovered: {
+  //   backgroundColor: '#49BEB7',
+  //   padding: 30,
+  // },
   cardPrimary: {
-    color: '#ECFFFB',
-    fontSize: 40,
+    color: '#1E6262',
+    fontSize: 30,
   },
   cardSecondary: {
-    color: '#ECFFFB',
-    // fontSize: 25,
-    // marginLeft: 60,
+    color: '#49BEB7',
   },
 });
 

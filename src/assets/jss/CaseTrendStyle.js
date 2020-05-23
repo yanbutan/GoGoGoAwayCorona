@@ -31,11 +31,11 @@ const caseTrendStyle = theme => ({
     elevation: 5,
   },
   cardPrimary: {
-    color: '#ECFFFB',
+    color: '#000000',
     fontSize: 40,
   },
   cardSecondary: {
-    color: '#ECFFFB',
+    color: '#000000',
     // fontSize: 25,
     marginLeft: 60,
   },

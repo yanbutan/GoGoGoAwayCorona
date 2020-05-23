@@ -39,7 +39,7 @@ export default function CaseTrend() {
           backgroundGradientTo: '#fff',
           decimalPlaces: 0, // optional, defaults to 2dp
           color: (opacity = 1) => `rgba(73, 190, 183, ${opacity})`,
-          labelColor: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
+          labelColor: (opacity = 0.5) => `rgba(0, 0, 0, ${opacity})`,
           propsForDots: {
             r: '4',
             strokeWidth: '2',
