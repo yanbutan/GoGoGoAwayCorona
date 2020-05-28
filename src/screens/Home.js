@@ -25,26 +25,26 @@ const initialState = {
   error: null,
   summaryData: {},
   trendData: {},
-  newsData: {},
+  newsData: [],
 };
 
 const reducer = (state, action) => {
   switch (action.type) {
     case 'SUCCESS':
       return {
-        loading: false,
         summaryData: action.fetchedSummary,
         // trendData: action.fetchedTrend,
-        // newsData: action.fetchedNews
+        newsData: action.fetchedNews,
+        loading: false,
       };
 
     case 'ERROR':
       return {
-        loading: false,
         error: action.errorMsg,
         summaryData: action.fetchedSummary,
         // trendData: action.fetchedTrend,
-        // newsData: action.fetchedNews
+        newsData: action.fetchedNews,
+        loading: false,
       };
 
     default:
@@ -62,20 +62,29 @@ export default function Home() {
         axios.get(
           'https://corona.lmao.ninja/v2/countries/Singapore?yesterday&strict&query',
         ),
+        axios.get(
+          `https://newsapi.org/v2/top-headlines?q=covid&language=en&apiKey=${NEWS_API_KEY}`,
+        ),
       ])
-      .then(fetchedSummary => {
-        dispatch({type: 'SUCCESS', fetchedSummary: fetchedSummary[0].data});
-      })
+      .then(
+        axios.spread((fetchedSummary, fetchedNews) => {
+          // console.log('NEWS >> ', fetchedNews.data.articles.slice(0, 1));
+          // console.log('summary >> ', fetchedSummary.data);
+          dispatch({
+            type: 'SUCCESS',
+            fetchedSummary: fetchedSummary.data,
+            fetchedNews: fetchedNews.data.articles.slice(0, 5),
+          });
+        }),
+      )
       .catch(error => {
         dispatch({type: 'ERROR', errorMsg: error.message});
       });
   }, [selectedRegion]);
 
-  return (
-    <>
-      {state.loading ? (
-        <ActivityIndicator />
-      ) : (
+  if (!state.loading) {
+    return (
+      <>
         <ScrollView style={styles.container}>
           <Header title="Covid Statistics" />
           <View style={styles.section}>
@@ -106,10 +115,9 @@ export default function Home() {
             <Summary data={state.summaryData} />
           </View>
           <CaseTrend />
-          <LatestNews />
+          <LatestNews data={state.newsData} />
         </ScrollView>
-      )}
-      {state.error ? state.error : null}
-    </>
-  );
+      </>
+    );
+  } else return <ActivityIndicator />;
 }
