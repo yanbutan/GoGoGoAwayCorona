@@ -23,11 +23,11 @@ export default function Summary(props) {
         </View>
         <View style={[styles.card, styles.shadow, styles.death]}>
           <View>
-            <Text style={[styles.cardPrimary, {color: '#A3003F'}]}>
-              {data.deaths}
+            <Text style={[styles.cardPrimary, {color: '#2D31AC'}]}>
+              {data.todayCases}
             </Text>
-            <Text style={[styles.cardSecondary, {color: '#FF5959'}]}>
-              Deaths
+            <Text style={[styles.cardSecondary, {color: '#6587DE'}]}>
+              Cases Today
             </Text>
           </View>
         </View>
@@ -42,11 +42,11 @@ export default function Summary(props) {
         </View>
         <View style={[styles.card, styles.shadow]}>
           <View>
-            <Text style={[styles.cardPrimary, {color: '#2D31AC'}]}>
-              {data.active}
+            <Text style={[styles.cardPrimary, {color: '#A3003F'}]}>
+              {data.deaths}
             </Text>
-            <Text style={[styles.cardSecondary, {color: '#6587DE'}]}>
-              Active
+            <Text style={[styles.cardSecondary, {color: '#FF5959'}]}>
+              Deaths
             </Text>
           </View>
           <View />

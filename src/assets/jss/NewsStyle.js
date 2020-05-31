@@ -18,7 +18,7 @@ const newsStyle = theme => ({
     margin: 12,
     borderRadius: 0,
     height: 200,
-    width: 300,
+    width: 250,
     backgroundColor: '#fff',
     borderColor: '#dddddd',
   },
@@ -34,15 +34,24 @@ const newsStyle = theme => ({
   },
   newsPrimary: {
     color: '#2D767F',
-    fontSize: 20,
+    fontSize: 17,
+    fontWeight: 'bold',
+    paddingRight: 5,
   },
   newsSecondary: {
     color: '#2D767F',
+    fontSize: 13,
   },
   image: {
     flex: 2,
   },
-  newsSummary: {flex: 1, paddingLeft: 10, paddingTop: 10},
+  newsSummary: {flex: 1.6, paddingLeft: 10, paddingTop: 5},
+  iconGrp: {
+    backgroundColor: '#ECEEF5',
+    borderRadius: 20,
+    padding: 5,
+    fontSize: 35,
+  },
 });
 
 export default newsStyle;
