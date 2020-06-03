@@ -52,6 +52,49 @@ const newsStyle = theme => ({
     padding: 5,
     fontSize: 35,
   },
+  articleContainer: {
+    // flex: 1,
+    // flexDirection: 'column',
+    // justifyContent: 'center',
+    // alignItems: 'center',
+    // margin: 10,
+  },
+  articlePicture: {
+    height: 250,
+    marginTop: 5,
+    marginBottom: 5,
+  },
+  articleTitle: {
+    color: '#2D767F',
+    fontSize: 25,
+    fontWeight: 'bold',
+    margin: 10,
+    marginBottom: 5,
+  },
+  articleSubtitle: {
+    color: '#2D767F',
+    fontSize: 17,
+    margin: 10,
+    marginTop: 5,
+    marginBottom: 5,
+  },
+  articleContent: {
+    color: '#2D767F',
+    fontSize: 20,
+    margin: 10,
+    marginBottom: 30,
+    lineHeight: 33,
+  },
+  articleDescrip: {
+    color: '#2D767F',
+    fontSize: 18,
+    margin: 10,
+    marginBottom: 5,
+    opacity: 0.7,
+    fontStyle: 'italic',
+    textTransform: 'capitalize',
+    lineHeight: 30,
+  },
 });
 
 export default newsStyle;

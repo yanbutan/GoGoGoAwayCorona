@@ -51,11 +51,11 @@ export default function LatestNews(props) {
               <View style={styles.newsSummary}>
                 <Text style={styles.newsPrimary}>{`${article.title.slice(
                   0,
-                  53,
+                  35,
                 )}...`}</Text>
                 <Text style={styles.newsSecondary}>{article.source.name}</Text>
                 <Text style={styles.newsSecondary}>
-                  {article.publishedAt.slice(0, 9)}
+                  {article.publishedAt.slice(0, 10)}
                 </Text>
               </View>
             </View>
@@ -76,8 +76,42 @@ export default function LatestNews(props) {
                 />
               </TouchableOpacity>
             </View>
+            <ScrollView>
+              <View style={styles.section}>
+                <View>
+                  <Text style={styles.articleTitle}>{article.title}</Text>
+                </View>
+                <View>
+                  <Text style={styles.articleSubtitle}>{`${
+                    article.author
+                  }, ${article.publishedAt.slice(0, 10)}`}</Text>
+                </View>
+                <View style={styles.articlePicture}>
+                  <Image
+                    source={{
+                      uri: article.urlToImage,
+                    }}
+                    style={{
+                      flex: 1,
+                      width: null,
+                      height: null,
+                      resizeMode: 'cover',
+                    }}
+                  />
+                </View>
+                <View>
+                  <Text style={styles.articleDescrip}>{`"${
+                    article.description
+                  }"`}</Text>
+                </View>
+                <View>
+                  <Text style={styles.articleContent}>{`${
+                    article.content
+                  }`}</Text>
+                </View>
+              </View>
+            </ScrollView>
           </View>
-          <Text>{article.title}</Text>
         </Modal>
       )}
     </View>
