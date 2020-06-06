@@ -16,7 +16,7 @@ const newsStyle = theme => ({
   titleText: {fontSize: 20, color: '#1E6262', marginLeft: 15},
   newsCard: {
     margin: 12,
-    borderRadius: 0,
+    borderRadius: 10,
     height: 200,
     width: 250,
     backgroundColor: '#fff',
@@ -45,7 +45,7 @@ const newsStyle = theme => ({
   image: {
     flex: 2,
   },
-  newsSummary: {flex: 1.6, paddingLeft: 10, paddingTop: 5},
+  newsSummary: {flex: 1.6, paddingLeft: 10, paddingTop: 5, paddingRight: 10},
   iconGrp: {
     backgroundColor: '#ECEEF5',
     borderRadius: 20,

@@ -11,6 +11,7 @@ import {
 import NewsStyle from 'src/assets/jss/NewsStyle';
 // import MaskWomanSVG from 'src/assets/svg/mask-woman.svg';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import ArticleModal from 'src/components/ArticleModal';
 const useStyles = StyleSheet.create(NewsStyle);
 const styles = useStyles();
 
@@ -45,14 +46,15 @@ export default function LatestNews(props) {
                     width: null,
                     height: null,
                     resizeMode: 'cover',
+                    borderTopLeftRadius: 10,
+                    borderTopRightRadius: 10,
                   }}
                 />
               </View>
               <View style={styles.newsSummary}>
-                <Text style={styles.newsPrimary}>{`${article.title.slice(
-                  0,
-                  35,
-                )}...`}</Text>
+                <Text numberOfLines={2} style={styles.newsPrimary}>{`${
+                  article.title
+                }...`}</Text>
                 <Text style={styles.newsSecondary}>{article.source.name}</Text>
                 <Text style={styles.newsSecondary}>
                   {article.publishedAt.slice(0, 10)}
@@ -65,53 +67,7 @@ export default function LatestNews(props) {
 
       {article && (
         <Modal presentationStyle="fullScreen" visible={openModal}>
-          <View>
-            <View
-              style={(styles.horizontalContain, {backgroundColor: '#ECEEF5'})}>
-              <TouchableOpacity onPress={() => setOpenModal(false)}>
-                <Icon
-                  name="arrow-left"
-                  color="#49BEB7"
-                  style={styles.iconGrp}
-                />
-              </TouchableOpacity>
-            </View>
-            <ScrollView>
-              <View style={styles.section}>
-                <View>
-                  <Text style={styles.articleTitle}>{article.title}</Text>
-                </View>
-                <View>
-                  <Text style={styles.articleSubtitle}>{`${
-                    article.author
-                  }, ${article.publishedAt.slice(0, 10)}`}</Text>
-                </View>
-                <View style={styles.articlePicture}>
-                  <Image
-                    source={{
-                      uri: article.urlToImage,
-                    }}
-                    style={{
-                      flex: 1,
-                      width: null,
-                      height: null,
-                      resizeMode: 'cover',
-                    }}
-                  />
-                </View>
-                <View>
-                  <Text style={styles.articleDescrip}>{`"${
-                    article.description
-                  }"`}</Text>
-                </View>
-                <View>
-                  <Text style={styles.articleContent}>{`${
-                    article.content
-                  }`}</Text>
-                </View>
-              </View>
-            </ScrollView>
-          </View>
+          <ArticleModal article={article} setOpenModal={setOpenModal} />
         </Modal>
       )}
     </View>
