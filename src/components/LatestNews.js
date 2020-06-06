@@ -47,7 +47,7 @@ export default function LatestNews(props) {
                     height: null,
                     resizeMode: 'cover',
                     borderTopLeftRadius: 10,
-                    borderTopRightRadius: 10,
+                    borderTopRadius: 10,
                   }}
                 />
               </View>

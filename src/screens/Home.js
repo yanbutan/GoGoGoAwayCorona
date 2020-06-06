@@ -14,6 +14,7 @@ import LatestNews from 'src/components/LatestNews';
 import HeaderStyle from 'src/assets/jss/HeaderStyle';
 import {Picker} from '@react-native-community/picker';
 import {NEWS_API_KEY} from 'react-native-dotenv';
+import {preprocess} from 'src/helpers/preprocess';
 import axios from 'axios';
 
 const useStyles = StyleSheet.create(HeaderStyle);
@@ -31,6 +32,7 @@ const initialState = {
 const reducer = (state, action) => {
   switch (action.type) {
     case 'SUCCESS':
+      preprocess(action.fetchedSummary);
       return {
         summaryData: action.fetchedSummary,
         // trendData: action.fetchedTrend,
@@ -68,8 +70,6 @@ export default function Home() {
       ])
       .then(
         axios.spread((fetchedSummary, fetchedNews) => {
-          // console.log('NEWS >> ', fetchedNews.data.articles.slice(0, 1));
-          // console.log('summary >> ', fetchedSummary.data);
           dispatch({
             type: 'SUCCESS',
             fetchedSummary: fetchedSummary.data,
