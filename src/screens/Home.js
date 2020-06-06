@@ -32,7 +32,7 @@ const initialState = {
 const reducer = (state, action) => {
   switch (action.type) {
     case 'SUCCESS':
-      preprocess(action.fetchedSummary);
+      preprocess(action.fetchedNews);
       return {
         summaryData: action.fetchedSummary,
         // trendData: action.fetchedTrend,

@@ -47,7 +47,7 @@ export default function LatestNews(props) {
                     height: null,
                     resizeMode: 'cover',
                     borderTopLeftRadius: 10,
-                    borderTopRadius: 10,
+                    borderTopRightRadius: 10,
                   }}
                 />
               </View>
@@ -56,9 +56,7 @@ export default function LatestNews(props) {
                   article.title
                 }...`}</Text>
                 <Text style={styles.newsSecondary}>{article.source.name}</Text>
-                <Text style={styles.newsSecondary}>
-                  {article.publishedAt.slice(0, 10)}
-                </Text>
+                <Text style={styles.newsSecondary}>{article.publishedAt}</Text>
               </View>
             </View>
           </TouchableOpacity>

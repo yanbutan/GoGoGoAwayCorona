@@ -14,6 +14,7 @@ const newsStyle = theme => ({
   },
   viewLeft: {flex: 0.95, flexDirection: 'row', justifyContent: 'flex-start'},
   titleText: {fontSize: 20, color: '#1E6262', marginLeft: 15},
+  viewRight: {flexDirection: 'row', justifyContent: 'flex-end'},
   newsCard: {
     margin: 12,
     borderRadius: 10,
@@ -78,22 +79,40 @@ const newsStyle = theme => ({
     marginTop: 5,
     marginBottom: 5,
   },
-  articleContent: {
+  articleContentContain: {
+    margin: 10,
+  },
+  articleContentText: {
     color: '#2D767F',
     fontSize: 20,
-    margin: 10,
-    marginBottom: 30,
+    marginBottom: 10,
     lineHeight: 33,
   },
-  articleDescrip: {
-    color: '#2D767F',
-    fontSize: 18,
+  articleDescripContain: {
     margin: 10,
     marginBottom: 5,
+  },
+  articleDescripText: {
+    marginBottom: 10,
+    color: '#2D767F',
+    fontSize: 18,
     opacity: 0.7,
     fontStyle: 'italic',
     textTransform: 'capitalize',
     lineHeight: 30,
+  },
+  readMoreContain: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 20,
+    backgroundColor: '#ECEEF5',
+    opacity: 0.7,
+  },
+  readMoreText: {
+    color: '#2D767F',
+    fontSize: 20,
+    fontWeight: 'bold',
+    textTransform: 'uppercase',
   },
 });
 

@@ -16,7 +16,7 @@ const styles = useStyles();
 
 export default function ArticleModal({article, setOpenModal}) {
   return (
-    <View>
+    <View style={{paddingBottom: 20}}>
       <View style={(styles.horizontalContain, {backgroundColor: '#ECEEF5'})}>
         <TouchableOpacity onPress={() => setOpenModal(false)}>
           <Icon name="arrow-left" color="#49BEB7" style={styles.iconGrp} />
@@ -28,9 +28,9 @@ export default function ArticleModal({article, setOpenModal}) {
             <Text style={styles.articleTitle}>{article.title}</Text>
           </View>
           <View>
-            <Text style={styles.articleSubtitle}>{`${
-              article.author
-            }, ${article.publishedAt.slice(0, 10)}`}</Text>
+            <Text style={styles.articleSubtitle}>{`${article.author}, ${
+              article.publishedAt
+            }`}</Text>
           </View>
           <View style={styles.articlePicture}>
             <Image
@@ -45,14 +45,25 @@ export default function ArticleModal({article, setOpenModal}) {
               }}
             />
           </View>
-          <View>
-            <Text style={styles.articleDescrip}>{`"${
-              article.description
-            }"`}</Text>
+          <View style={styles.articleDescripContain}>
+            {article.description.map(para => (
+              <>
+                <Text style={styles.articleDescripText}>{para}</Text>
+              </>
+            ))}
           </View>
-          <View>
-            <Text style={styles.articleContent}>{`${article.content}`}</Text>
+          <View style={styles.articleContentContain}>
+            {article.content.map(para => (
+              <>
+                <Text style={styles.articleContentText}>{para}</Text>
+              </>
+            ))}
           </View>
+          <TouchableOpacity>
+            <View style={styles.readMoreContain}>
+              <Text style={styles.readMoreText}>Read Full Story</Text>
+            </View>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </View>
