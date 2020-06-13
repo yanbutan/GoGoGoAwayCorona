@@ -7,6 +7,7 @@ import {
   Image,
   Modal,
   TouchableOpacity,
+  Linking,
 } from 'react-native';
 import NewsStyle from 'src/assets/jss/NewsStyle';
 // import MaskWomanSVG from 'src/assets/svg/mask-woman.svg';
@@ -59,7 +60,7 @@ export default function ArticleModal({article, setOpenModal}) {
               </>
             ))}
           </View>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => Linking.openURL(article.url)}>
             <View style={styles.readMoreContain}>
               <Text style={styles.readMoreText}>Read Full Story</Text>
             </View>
