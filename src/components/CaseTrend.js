@@ -6,33 +6,25 @@ import MaskWomanSVG from 'src/assets/svg/mask-woman.svg';
 const useStyles = StyleSheet.create(CaseTrendStyle);
 const styles = useStyles();
 
-export default function CaseTrend() {
+export default function CaseTrend({data}) {
   return (
     <View style={styles.section}>
       <View style={styles.horizontalContain}>
         <View style={styles.viewLeft}>
-          <Text style={styles.titleText}>Case Trend</Text>
+          <Text style={styles.titleText}>Monthly Case Trend</Text>
         </View>
       </View>
       <LineChart
         data={{
-          labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+          labels: data.months,
           datasets: [
             {
-              data: [
-                Math.random() * 100,
-                Math.random() * 100,
-                Math.random() * 100,
-                Math.random() * 100,
-                Math.random() * 100,
-                Math.random() * 100,
-              ],
+              data: data.graphData,
             },
           ],
         }}
         width={Dimensions.get('window').width} // from react-native
         height={220}
-        yAxisSuffix="k"
         yAxisInterval={1} // optional, defaults to 1
         chartConfig={{
           backgroundGradientFrom: '#fff',

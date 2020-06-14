@@ -13,10 +13,8 @@ const num_to_month = {
   '12': 'Dec',
 };
 
-export const preprocess = data => {
-  // data[3].content.replace(/\n/g, ' ');
-  // console.log(data[3].content);
-  data.forEach(function(article) {
+export const preprocess = (newsData, trendData) => {
+  newsData.forEach(function(article) {
     //Change date format
     let date = article.publishedAt.slice(0, 10);
     let month_num = date.split('-')[1];
@@ -29,4 +27,22 @@ export const preprocess = data => {
     article.content = article.content.split('\r\n');
     article.description = article.description.split('\r\n');
   });
+
+  //Preprocessing of trend data fetched from api endpoint
+  let processedTrendData = {
+    months: [],
+    graphData: [],
+  };
+  let counter = 5;
+  let i = 0;
+  while (counter >= 0) {
+    let month = num_to_month[trendData[i].last_update.split('-')[1]];
+    if (!processedTrendData.months.includes(month)) {
+      processedTrendData.months.unshift(month);
+      processedTrendData.graphData.unshift(trendData[i].cases);
+      counter--;
+    }
+    i++;
+  }
+  return processedTrendData;
 };
