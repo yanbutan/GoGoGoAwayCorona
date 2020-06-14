@@ -24,8 +24,18 @@ export const preprocess = (newsData, trendData) => {
 
     // Replace all regular expressions
     // Split the string into array based on line break \r\n
-    article.content = article.content.split('\r\n');
-    article.description = article.description.split('\r\n');
+    console.log('COntent >>> ', article.content);
+    console.log('Description >>> ', article.description);
+    if (article.content) {
+      if (Array.isArray(article.content))
+        article.content = article.content[0].split('\r\n');
+      else article.content = article.content.split('\r\n');
+    }
+
+    if (article.description)
+      if (Array.isArray(article.description))
+        article.description = article.description[0].split('\r\n');
+      else article.description = article.description.split('\r\n');
   });
 
   //Preprocessing of trend data fetched from api endpoint
@@ -39,7 +49,10 @@ export const preprocess = (newsData, trendData) => {
     let month = num_to_month[trendData[i].last_update.split('-')[1]];
     if (!processedTrendData.months.includes(month)) {
       processedTrendData.months.unshift(month);
-      processedTrendData.graphData.unshift(trendData[i].cases);
+      if (trendData[i].cases)
+        processedTrendData.graphData.unshift(trendData[i].cases);
+      else processedTrendData.graphData.unshift(trendData[i].total_cases);
+
       counter--;
     }
     i++;

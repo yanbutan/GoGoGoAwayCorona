@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import {View, Text, StyleSheet, Dimensions} from 'react-native';
 import {LineChart} from 'react-native-chart-kit';
 import CaseTrendStyle from 'src/assets/jss/CaseTrendStyle';
-import MaskWomanSVG from 'src/assets/svg/mask-woman.svg';
 const useStyles = StyleSheet.create(CaseTrendStyle);
 const styles = useStyles();
 

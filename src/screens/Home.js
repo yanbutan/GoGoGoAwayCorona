@@ -36,6 +36,7 @@ const reducer = (state, action) => {
   switch (action.type) {
     case 'SUCCESS':
       let trendData = preprocess(action.fetchedNews, action.fetchedTrend);
+      // console.log('Trend Data is >> ', trendData);
       return {
         summaryData: action.fetchedSummary,
         trendData: trendData,
@@ -52,6 +53,13 @@ const reducer = (state, action) => {
         loading: false,
       };
 
+    case 'RESET':
+      return {
+        loading: true,
+        summaryData: {},
+        trendData: {},
+        newsData: [],
+      };
     default:
       return state;
   }
@@ -59,26 +67,42 @@ const reducer = (state, action) => {
 
 export default function Home() {
   const [selectedRegion, setSelectedRegion] = useState('sg');
+  const [summaryRegion, setSummaryRegion] = useState('countries/sg');
   const [state, dispatch] = useReducer(reducer, initialState);
+  const [counter, setCounter] = useState(0);
+
+  const handleChangeRegion = region => {
+    console.log(region);
+    if (region == '') {
+      setSummaryRegion('all');
+    } else if (region == 'sg') {
+      setSummaryRegion('countries/sg');
+    }
+    setSelectedRegion(region);
+    dispatch({type: 'RESET'});
+    setCounter(counter + 1);
+  };
 
   useEffect(() => {
+    console.log('loading state is >>> ', state.loading);
     axios
       .all([
         axios.get(
-          'https://corona.lmao.ninja/v2/countries/sg?yesterday&strict&query',
+          `https://corona.lmao.ninja/v2/${summaryRegion}?yesterday&strict&query`,
         ),
         axios.get(
-          `https://newsapi.org/v2/top-headlines?q=covid&language=en&country=sg&apiKey=${NEWS_API_KEY}`,
+          `https://newsapi.org/v2/top-headlines?q=covid&language=en&country=${selectedRegion}&apiKey=${NEWS_API_KEY}`,
         ),
-        axios.get('https://covid19-api.org/api/timeline/sg'),
+        axios.get(`https://covid19-api.org/api/timeline/${selectedRegion}`),
       ])
       .then(
         axios.spread((fetchedSummary, fetchedNews, fetchedTrend) => {
-          // console.log(
-          //   'Fetched News Data >> ',
-          //   fetchedNews.data.articles.slice(0, 5),
-          // );
+          console.log(
+            'Fetched News Data >> ',
+            fetchedNews.data.articles.slice(0, 5),
+          );
           // console.log('Fetched Trend Data >> ', fetchedTrend.data);
+          // console.log('Fetched Summary Data >> ', fetchedSummary.data);
           dispatch({
             type: 'SUCCESS',
             fetchedSummary: fetchedSummary.data,
@@ -90,7 +114,7 @@ export default function Home() {
       .catch(error => {
         dispatch({type: 'ERROR', errorMsg: error.message});
       });
-  }, [selectedRegion]);
+  }, [counter]);
 
   if (!state.loading) {
     return (
@@ -108,7 +132,7 @@ export default function Home() {
                     style={styles.pickerLabel}
                     selectedValue={selectedRegion}
                     onValueChange={(itemValue, itemIndex) =>
-                      setSelectedRegion(itemValue)
+                      handleChangeRegion(itemValue)
                     }>
                     {pickerData.map((region, index) => (
                       <Picker.Item
@@ -129,5 +153,16 @@ export default function Home() {
         </ScrollView>
       </>
     );
-  } else return <ActivityIndicator />;
+  } else
+    return (
+      <View
+        style={{
+          flex: 1,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}>
+        <ActivityIndicator size="large" />
+      </View>
+    );
 }
