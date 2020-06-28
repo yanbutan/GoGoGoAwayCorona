@@ -35,7 +35,11 @@ const initialState = {
 const reducer = (state, action) => {
   switch (action.type) {
     case 'SUCCESS':
-      let trendData = preprocess(action.fetchedNews, action.fetchedTrend);
+      let trendData = preprocess(
+        action.fetchedNews,
+        action.fetchedTrend,
+        action.fetchedSummary,
+      );
       // console.log('Trend Data is >> ', trendData);
       return {
         summaryData: action.fetchedSummary,

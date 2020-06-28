@@ -13,7 +13,9 @@ const num_to_month = {
   '12': 'Dec',
 };
 
-export const preprocess = (newsData, trendData) => {
+export const preprocess = (newsData, trendData, summaryData) => {
+  // Processing the summary Data
+
   newsData.forEach(function(article) {
     //Change date format
     let date = article.publishedAt.slice(0, 10);
