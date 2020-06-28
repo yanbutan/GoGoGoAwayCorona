@@ -25,6 +25,7 @@ export default function CaseTrend({data}) {
         width={Dimensions.get('window').width} // from react-native
         height={220}
         yAxisInterval={1} // optional, defaults to 1
+        yAxisSuffix="k"
         chartConfig={{
           backgroundGradientFrom: '#fff',
           backgroundGradientTo: '#fff',

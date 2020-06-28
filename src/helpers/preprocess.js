@@ -1,3 +1,4 @@
+import millify from 'millify';
 const num_to_month = {
   '01': 'Jan',
   '02': 'Feb',
@@ -26,8 +27,6 @@ export const preprocess = (newsData, trendData, summaryData) => {
 
     // Replace all regular expressions
     // Split the string into array based on line break \r\n
-    console.log('COntent >>> ', article.content);
-    console.log('Description >>> ', article.description);
     if (article.content) {
       if (Array.isArray(article.content))
         article.content = article.content[0].split('\r\n');
@@ -51,10 +50,15 @@ export const preprocess = (newsData, trendData, summaryData) => {
     let month = num_to_month[trendData[i].last_update.split('-')[1]];
     if (!processedTrendData.months.includes(month)) {
       processedTrendData.months.unshift(month);
-      if (trendData[i].cases)
-        processedTrendData.graphData.unshift(trendData[i].cases);
-      else processedTrendData.graphData.unshift(trendData[i].total_cases);
 
+      //This is just cos the keys in api's for overall and country specifics are different
+      if (trendData[i].cases) {
+        // console.log('Millified Number ', millify(trendData[i].cases));
+        processedTrendData.graphData.unshift(trendData[i].cases / 1000);
+      } else {
+        processedTrendData.graphData.unshift(trendData[i].total_cases / 1000);
+        // console.log('Millified Number ', millify(trendData[i].cases));
+      }
       counter--;
     }
     i++;

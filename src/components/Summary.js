@@ -8,14 +8,7 @@ const styles = useStyles();
 
 export default function Summary(props) {
   const {data} = props;
-  const option = {
-    commafy: true,
-    shortFormat: true,
-    // shortFormatMinValue: 10000,
-    title: true,
-  };
 
-  // if (data) {
   return (
     <>
       <View style={[styles.horizontalContain, {marginRight: 6, marginLeft: 6}]}>
@@ -33,7 +26,7 @@ export default function Summary(props) {
         <View style={[styles.card, styles.shadow, styles.death]}>
           <View>
             <Text style={[styles.cardPrimary, {color: '#2D31AC'}]}>
-              {data.todayCases}
+              {millify(parseInt(data.todayCases, 10))}
             </Text>
             <Text style={[styles.cardSecondary, {color: '#6587DE'}]}>
               Cases Today
@@ -44,7 +37,9 @@ export default function Summary(props) {
       <View style={[styles.horizontalContain, {marginRight: 6, marginLeft: 6}]}>
         <View style={[styles.card, styles.shadow, styles.recovered]}>
           <View>
-            <Text style={styles.cardPrimary}>{data.recovered}</Text>
+            <Text style={styles.cardPrimary}>
+              {millify(parseInt(data.recovered, 10))}
+            </Text>
             <Text style={styles.cardSecondary}>Recovered</Text>
           </View>
           <View />
@@ -52,7 +47,7 @@ export default function Summary(props) {
         <View style={[styles.card, styles.shadow]}>
           <View>
             <Text style={[styles.cardPrimary, {color: '#A3003F'}]}>
-              {data.deaths}
+              {millify(parseInt(data.deaths, 10))}
             </Text>
             <Text style={[styles.cardSecondary, {color: '#FF5959'}]}>
               Deaths
